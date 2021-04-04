@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { Card } from "../../atoms/card/Card";
 import { UserNameWithIcon } from "../../molucules/user/UserNameWithIcon";
 
-export const UserCard = ({ user }) => {
+export const UserCard = ({ user, isAdmin }) => {
   return (
     <Card>
-      <UserNameWithIcon image={user.image} name={user.name} />
+      <UserNameWithIcon image={user.image} name={user.name} isAdmin={isAdmin} />
       <SDl>
         <dt>メール</dt>
         <dd>{user.mail}</dd>

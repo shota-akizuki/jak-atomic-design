@@ -1,3 +1,4 @@
+import { useLocation } from "react-router";
 import styled from "styled-components";
 import { SearchInput } from "../molucules/SearchInput";
 import { UserCard } from "../organisms/user/UserCard";
@@ -15,13 +16,17 @@ const users = [...Array(10).keys()].map((val) => {
 });
 
 export const Users = () => {
+  //遷移時データを受け取る（今回はstate）
+  const { state } = useLocation();
+  const isAdmin = state ? state.isAdmin : false;
+  console.log(state);
   return (
     <SContainer>
       <h2>ユーザー一覧</h2>
       <SearchInput />
       <SUserArea>
         {users.map((user) => (
-          <UserCard key={user.id} user={user} />
+          <UserCard isAdmin={isAdmin} key={user.id} user={user} />
         ))}
       </SUserArea>
     </SContainer>
